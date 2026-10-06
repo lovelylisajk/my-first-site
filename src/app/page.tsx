@@ -20,7 +20,7 @@ export default function Home() {
               맹
             </span>
             <span className="text-xl font-black tracking-tight text-[#7f5e3e]">
-              맹꽁당 <span className="text-xs font-medium text-[#7bb26e]">Baking Studio</span>
+              <span className="text-cyan-600">맹꽁당</span> <span className="text-xs font-medium text-[#7bb26e]">Baking Studio</span>
             </span>
           </a>
 
@@ -83,7 +83,7 @@ export default function Home() {
               </div>
             </div>
             <span className="mt-3 text-xs font-semibold uppercase tracking-wider text-[#7bb26e] bg-[#7bb26e]/10 px-2.5 py-0.5 rounded-full">
-              Chef 맹꽁당
+              Chef <span className="text-cyan-600">맹꽁당</span>
             </span>
           </div>
 
