@@ -143,8 +143,7 @@ export default function Home() {
               Brand Story
             </span>
             <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-[#7f5e3e] break-keep">
-              단순히 굽는 법이 아닌, <br className="hidden sm:inline" />
-              매장에서 살아남는 ‘실전 시스템’을 나눕니다
+              팔리는 디저트, 매장 ‘실전 시스템’
             </h2>
           </div>
 
