@@ -147,37 +147,59 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="rounded-3xl bg-white p-8 sm:p-12 border border-[#906f4e]/15 shadow-sm space-y-6 text-base sm:text-lg leading-relaxed text-[#906f4e] break-keep">
-            <p>
-              취미로 구울 때 완벽했던 디저트가 왜 매장 오븐에만 들어가면 실패할까요?
-              음료 주문을 받으며 손이 바쁜 1인 매장에서, 복잡한 공정의 레시피는 금세 사장님을 지치게 만듭니다.
+          {/* 메인 스토리 카드 */}
+          <div className="rounded-3xl bg-white p-7 sm:p-10 border border-[#906f4e]/15 shadow-sm space-y-6 break-keep">
+            {/* 문제 제기 - 가독성 높은 짧은 문장 */}
+            <p className="text-base sm:text-lg text-[#906f4e] leading-relaxed">
+              취미로 구울 땐 완벽했던 디저트, <strong className="text-[#7f5e3e] font-bold">왜 매장 오븐에만 들어가면 실패할까요?</strong><br />
+              음료 주문 받기도 바쁜 1인 매장에서 복잡한 레시피는 사장님을 지치게 만듭니다.
             </p>
-            <p className="font-semibold text-[#7f5e3e] border-l-4 border-[#7bb26e] pl-4 italic">
-              “디저트는 손님을 끌어들이는 가장 강력한 무기이지만, 사장님의 일상을 무너뜨려선 안 됩니다.”
-            </p>
-            <p>
-              맹꽁당은 수많은 테스트를 통해 <strong className="text-[#7f5e3e]">매장의 작업 동선, 전날 사전 준비(냉동 생지화), 원가 마진율(70% 이상), 보관성</strong>까지 철저하게 검증된 레시피만 수업합니다.
-              초보 사장님도 첫 오픈 날 흔들림 없이 구워내고, 손님들이 먼저 “이 구움과자 어디서 떼오신 거예요?”가 아닌 “여기 디저트 찐맛집이네요!”라고 감탄할 수 있도록 가장 든든한 파트너가 되어 드리겠습니다.
+
+            {/* 인용구 강조 박스 */}
+            <div className="rounded-2xl bg-[#faf7f3] border-l-4 border-[#7bb26e] p-4 sm:p-5">
+              <p className="font-bold text-[#7f5e3e] text-base sm:text-lg">
+                “디저트는 손님을 부르는 무기이지만, <span className="text-[#7bb26e] underline decoration-[#7bb26e]/40 decoration-2 underline-offset-4">사장님의 일상을 무너뜨려선 안 됩니다.</span>”
+              </p>
+            </div>
+
+            {/* 핵심 차별점 - 4개 포인트 칩/뱃지 */}
+            <div className="pt-2">
+              <p className="text-sm font-bold text-[#7f5e3e] mb-3">
+                맹꽁당은 철저히 <span className="text-[#7bb26e] font-extrabold">‘매장 생존’</span>에 맞춘 레시피만 수업합니다:
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <div className="flex items-center gap-2 rounded-xl bg-[#7bb26e]/10 p-3 text-xs sm:text-sm font-bold text-[#5c8a50] border border-[#7bb26e]/20">
+                  <span className="text-base">⏱️</span> 1인 매장 동선
+                </div>
+                <div className="flex items-center gap-2 rounded-xl bg-[#7bb26e]/10 p-3 text-xs sm:text-sm font-bold text-[#5c8a50] border border-[#7bb26e]/20">
+                  <span className="text-base">🥐</span> 전날 사전준비·생지
+                </div>
+                <div className="flex items-center gap-2 rounded-xl bg-[#7bb26e]/10 p-3 text-xs sm:text-sm font-bold text-[#5c8a50] border border-[#7bb26e]/20">
+                  <span className="text-base">📈</span> 마진율 70%+ 검증
+                </div>
+                <div className="flex items-center gap-2 rounded-xl bg-[#7bb26e]/10 p-3 text-xs sm:text-sm font-bold text-[#5c8a50] border border-[#7bb26e]/20">
+                  <span className="text-base">✨</span> 첫날부터 일관된 맛
+                </div>
+              </div>
+            </div>
+
+            {/* 마무리 한마디 */}
+            <p className="text-sm sm:text-base text-[#906f4e] pt-2 border-t border-[#906f4e]/10">
+              첫 오픈 날에도 당황 없이 구워내고, 손님에게 <strong className="text-[#7f5e3e]">“여기 디저트 찐맛집이네요!”</strong> 소리를 듣도록 가장 든든한 파트너가 되어 드립니다.
             </p>
           </div>
 
-          {/* 가족을 위한 디저트 이야기 */}
-          <div className="mt-8 rounded-3xl bg-white/80 border border-[#7bb26e]/30 p-8 sm:p-10 text-center space-y-4 shadow-sm backdrop-blur-sm">
-            <span className="inline-block text-3xl text-[#7bb26e] font-serif leading-none">“</span>
-            <h3 className="text-xl sm:text-2xl font-black text-[#7f5e3e] tracking-tight">
-              가족을 위한 디저트 이야기
-            </h3>
-            <p className="mx-auto max-w-2xl text-base sm:text-lg leading-relaxed text-[#906f4e] italic break-keep">
-              소중한 가족과 사랑하는 사람들에게 언제나 마음 편히 권할 수 있는 디저트를 굽고 싶었습니다.
-              정제된 설탕과 밀가루에 대한 부담을 덜어내고, 좋은 원재료 본연의 깊고 구수한 풍미를 살려
-              마지막 한 입까지 속 편안하고 기분 좋은 달콤함을 전하는 것.
-              맹꽁당이 정성을 다해 따뜻한 오븐 앞에 서는 또 하나의 진심 어린 이유입니다.
-            </p>
-            <div className="pt-2 flex items-center justify-center gap-2">
-              <span className="h-0.5 w-6 bg-[#7bb26e]/30" />
-              <span className="text-xs font-semibold text-[#7bb26e]">맹꽁당의 다정한 마음</span>
-              <span className="h-0.5 w-6 bg-[#7bb26e]/30" />
+          {/* 가족을 위한 디저트 이야기 (감성 카드 리뉴얼) */}
+          <div className="mt-6 rounded-3xl bg-gradient-to-br from-white via-[#faf7f3] to-[#7bb26e]/10 border border-[#7bb26e]/25 p-7 sm:p-9 shadow-sm break-keep">
+            <div className="flex items-center gap-2.5 mb-3">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#7bb26e] text-white text-xs font-bold shadow-sm">♥</span>
+              <h3 className="text-lg sm:text-xl font-black text-[#7f5e3e] tracking-tight">
+                가족을 위한 디저트 이야기
+              </h3>
             </div>
+            <p className="text-sm sm:text-base leading-relaxed text-[#906f4e]">
+              소중한 가족에게 언제든 편히 권할 수 있도록, <span className="font-bold text-[#5c8a50] bg-[#7bb26e]/15 px-2 py-0.5 rounded-md">정제 설탕·밀가루 부담을 덜고</span> 좋은 원재료 본연의 풍미를 살렸습니다. 마지막 한 입까지 속 편안하고 기분 좋은 달콤함—<strong className="text-[#7f5e3e]">맹꽁당이 오븐 앞에 서는 진심</strong>입니다.
+            </p>
           </div>
         </div>
       </section>
