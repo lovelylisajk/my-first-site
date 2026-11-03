@@ -5,9 +5,56 @@ import Image from "next/image";
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [contactName, setContactName] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
+  const [isSending, setIsSending] = useState(false);
+  const [sendResult, setSendResult] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSending(true);
+    setSendResult(null);
+
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: contactName,
+          message: contactMessage,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setSendResult({
+          type: "error",
+          text: data.error || "오류가 발생했습니다.",
+        });
+      } else {
+        setSendResult({
+          type: "success",
+          text: "보냈어요!",
+        });
+        setContactName("");
+        setContactMessage("");
+      }
+    } catch (err) {
+      setSendResult({
+        type: "error",
+        text: err instanceof Error ? err.message : "네트워크 오류가 발생했습니다.",
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -896,6 +943,80 @@ export default function Home() {
                 </a>
               </div>
             </div>
+          </div>
+
+          {/* ── 연락하기 (이메일 전송 폼) ── */}
+          <div className="mt-8 rounded-3xl bg-white p-8 sm:p-12 border border-[#906f4e]/15 shadow-sm">
+            <div className="mb-6 space-y-2 text-center">
+              <span className="inline-block rounded-full bg-[#7bb26e]/15 px-3 py-1 text-xs font-bold text-[#7bb26e]">
+                Email Message
+              </span>
+              <h3 className="text-xl sm:text-2xl font-black text-[#7f5e3e]">
+                연락하기
+              </h3>
+              <p className="text-xs sm:text-sm text-[#906f4e]/80">
+                이름과 하고 싶은 말을 남겨주시면 메일로 바로 전달됩니다.
+              </p>
+            </div>
+
+            <form onSubmit={handleContactSubmit} className="mx-auto max-w-xl space-y-5">
+              <div className="space-y-1.5">
+                <label
+                  htmlFor="contact-name"
+                  className="block text-sm font-bold text-[#7f5e3e]"
+                >
+                  이름
+                </label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  required
+                  value={contactName}
+                  onChange={(e) => setContactName(e.target.value)}
+                  placeholder="이름을 입력해 주세요"
+                  className="w-full rounded-xl border border-[#906f4e]/25 bg-[#fdfbf9] px-4 py-3 text-sm text-[#7f5e3e] placeholder:text-[#906f4e]/50 focus:border-[#7bb26e] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#7bb26e]/20 transition-all"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label
+                  htmlFor="contact-message"
+                  className="block text-sm font-bold text-[#7f5e3e]"
+                >
+                  하고 싶은 말
+                </label>
+                <textarea
+                  id="contact-message"
+                  required
+                  rows={4}
+                  value={contactMessage}
+                  onChange={(e) => setContactMessage(e.target.value)}
+                  placeholder="문의 내용이나 하고 싶은 말을 자유롭게 적어주세요"
+                  className="w-full rounded-xl border border-[#906f4e]/25 bg-[#fdfbf9] px-4 py-3 text-sm text-[#7f5e3e] placeholder:text-[#906f4e]/50 focus:border-[#7bb26e] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#7bb26e]/20 transition-all resize-y"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSending}
+                className="w-full rounded-xl bg-[#7bb26e] px-6 py-4 text-base font-bold text-white shadow-md shadow-[#7bb26e]/20 hover:bg-[#6da161] disabled:opacity-60 disabled:cursor-not-allowed transition-all cursor-pointer"
+              >
+                {isSending ? "보내는 중..." : "보내기"}
+              </button>
+
+              {sendResult && (
+                <div
+                  role="status"
+                  className={`rounded-xl p-4 text-center text-sm font-bold ${
+                    sendResult.type === "success"
+                      ? "bg-[#eef6ea] text-[#5c8a50] border border-[#7bb26e]/30"
+                      : "bg-red-50 text-red-600 border border-red-200"
+                  }`}
+                >
+                  {sendResult.text}
+                </div>
+              )}
+            </form>
           </div>
         </div>
       </section>
