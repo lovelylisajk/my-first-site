@@ -16,6 +16,12 @@ export const metadata: Metadata = {
   title: "맹꽁당 베이킹 스튜디오 | 카페 사장님의 첫 디저트 파트너",
   description:
     "카페 사장님의 첫 디저트 메뉴, 맹꽁당이 함께 굽습니다. 1:1 맞춤형 실전 구움과자·케이크 클래스 및 창업 컨설팅.",
+  verification: {
+    google: "Z6_cOvuhW-xR9PRsd_w1acnT2Ma9ibLNB4zksh4WvkY",
+    other: {
+      "naver-site-verification": "9f239285fe008afe86d116e5777c90b5fe693243",
+    },
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
