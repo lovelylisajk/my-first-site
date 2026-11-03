@@ -76,6 +76,7 @@ export default function Home() {
             <a href="#target" className="hover:text-[#7f5e3e] transition-colors">수강대상</a>
             <a href="#programs" className="hover:text-[#7f5e3e] transition-colors">프로그램</a>
             <a href="#healthy" className="hover:text-[#7f5e3e] transition-colors">저당 디저트</a>
+            <a href="#ai-class" className="hover:text-[#7f5e3e] transition-colors">AI 매장운영</a>
             <a href="#why" className="hover:text-[#7f5e3e] transition-colors">차별점</a>
             <a href="#class" className="hover:text-[#7f5e3e] transition-colors">클래스 현장</a>
             <a href="#faq" className="hover:text-[#7f5e3e] transition-colors">FAQ</a>
@@ -578,6 +579,125 @@ export default function Home() {
               className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#7bb26e] px-9 py-4 text-base font-bold text-white shadow-lg shadow-[#7bb26e]/25 hover:bg-[#6da161] hover:-translate-y-0.5 transition-all"
             >
               <span>저당 디저트 클래스 문의</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5-2. 카페 사장님을 위한 실전 AI 클래스 전용 섹션 (id="ai-class") ── */}
+      <section id="ai-class" className="py-20 bg-[#faf7f3] border-b border-[#906f4e]/10">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center space-y-3 mb-12 max-w-3xl mx-auto">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-cyan-600/30 px-3.5 py-1 text-xs font-bold text-cyan-700 uppercase tracking-wider shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-cyan-600 animate-pulse" />
+              Baking × AI Smart Store
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-[#7f5e3e] break-keep">
+              디저트는 맛있게 굽고, 홍보와 매장 운영은 AI에게 맡기세요
+            </h2>
+            <p className="text-base sm:text-lg font-medium text-[#906f4e] leading-relaxed break-keep">
+              바쁜 1인 카페 사장님이 퇴근 후 마케팅 때문에 지치지 않도록, 매장에서 바로 쓰는 실전 AI 활용법을 1:1로 함께 알려드립니다.
+            </p>
+          </div>
+
+          {/* AI 교육 카드 3개 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* 카드 1 */}
+            <div className="rounded-3xl bg-white p-7 border border-[#906f4e]/15 shadow-sm hover:border-[#7bb26e] hover:shadow-xl transition-all space-y-4 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eef6ea] text-2xl">
+                  📱
+                </div>
+                <h3 className="text-xl font-black text-[#7f5e3e]">인스타 · 블로그 3분 자동화</h3>
+                <p className="text-sm text-[#906f4e] leading-relaxed break-keep">
+                  구워 나온 디저트 사진 한 장만 있으면 끝! 손님이 찾아오게 만드는 인스타그램 감성 피드, 릴스 대본, 네이버 플레이스·블로그 홍보글을 AI로 3분 만에 작성합니다.
+                </p>
+                <div className="pt-2 text-xs font-semibold text-[#7bb26e]">
+                  #인스타홍보자동화 #네이버플레이스 #릴스대본
+                </div>
+              </div>
+              <div className="pt-4 border-t border-[#906f4e]/10">
+                <a
+                  href="https://pf.kakao.com/_NQslxj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center rounded-xl bg-[#eef6ea] py-2.5 text-xs font-bold text-[#7f5e3e] hover:bg-[#7bb26e] hover:text-white transition-colors"
+                >
+                  SNS 마케팅 AI 문의
+                </a>
+              </div>
+            </div>
+
+            {/* 카드 2 (추천) */}
+            <div className="rounded-3xl bg-white p-7 border-2 border-[#7bb26e] shadow-md hover:shadow-xl transition-all space-y-4 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eef6ea] text-2xl">
+                  ✨
+                </div>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-black text-[#7f5e3e]">신메뉴 기획 & 홍보물 제작</h3>
+                  <span className="rounded-full bg-[#7bb26e] px-2.5 py-0.5 text-[11px] font-bold text-white">
+                    인기
+                  </span>
+                </div>
+                <p className="text-sm text-[#906f4e] leading-relaxed break-keep">
+                  계절별 잘 팔리는 디저트 컨셉 기획부터 눈길을 사로잡는 메뉴 네이밍, 매장 앞 배너·POP 문구와 이미지 시안까지 디자이너 없이 직접 뚝딱 만들어냅니다.
+                </p>
+                <div className="pt-2 text-xs font-semibold text-[#7bb26e]">
+                  #신메뉴네이밍 #POP포스터문구 #시즌메뉴기획
+                </div>
+              </div>
+              <div className="pt-4 border-t border-[#906f4e]/10">
+                <a
+                  href="https://pf.kakao.com/_NQslxj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center rounded-xl bg-[#7bb26e] py-2.5 text-xs font-bold text-white hover:bg-[#6da161] transition-colors"
+                >
+                  베이킹+AI 통합 클래스 문의
+                </a>
+              </div>
+            </div>
+
+            {/* 카드 3 */}
+            <div className="rounded-3xl bg-white p-7 border border-[#906f4e]/15 shadow-sm hover:border-[#7bb26e] hover:shadow-xl transition-all space-y-4 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eef6ea] text-2xl">
+                  📊
+                </div>
+                <h3 className="text-xl font-black text-[#7f5e3e]">스마트 원가 · 단골 운영 비서</h3>
+                <p className="text-sm text-[#906f4e] leading-relaxed break-keep">
+                  복잡한 엑셀 수식 몰라도 괜찮습니다. AI를 활용해 재료비 변동에 따른 원가율·판매가를 즉시 계산하고, 리뷰 답글과 단골 이벤트 안내 문구까지 손쉽게 관리합니다.
+                </p>
+                <div className="pt-2 text-xs font-semibold text-[#7bb26e]">
+                  #AI원가계산 #리뷰답글자동화 #1인매장비서
+                </div>
+              </div>
+              <div className="pt-4 border-t border-[#906f4e]/10">
+                <a
+                  href="https://pf.kakao.com/_NQslxj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center rounded-xl bg-[#eef6ea] py-2.5 text-xs font-bold text-[#7f5e3e] hover:bg-[#7bb26e] hover:text-white transition-colors"
+                >
+                  스마트 매장 운영 문의
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* 중앙 CTA 버튼 */}
+          <div className="pt-10 text-center">
+            <a
+              href="https://pf.kakao.com/_NQslxj"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#7bb26e] px-9 py-4 text-base font-bold text-white shadow-lg shadow-[#7bb26e]/25 hover:bg-[#6da161] hover:-translate-y-0.5 transition-all"
+            >
+              <span>베이킹 + AI 매장운영 클래스 상담하기</span>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
