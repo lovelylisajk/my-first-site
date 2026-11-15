@@ -1004,8 +1004,8 @@ export default function Home() {
                 <span className="text-xs font-bold text-[#7bb26e] uppercase">Location</span>
                 <h4 className="text-base font-bold text-[#7f5e3e]">맹꽁당 베이킹 스튜디오</h4>
                 <p className="text-[#906f4e]/90 text-xs sm:text-sm leading-relaxed">
-                  100% 사전 예약제 클래스 및 1:1 맞춤 상담 운영<br />
-                  (상세 위치는 클래스 예약 확정 후 개별 안내드립니다)
+                  경기도 시흥시 대야동 489-6<br />
+                  (100% 사전 예약제 클래스 및 1:1 맞춤 상담 운영)
                 </p>
               </div>
 
@@ -1025,10 +1025,11 @@ export default function Home() {
                 <div>
                   <span className="text-xs font-bold text-[#7bb26e] uppercase">Map & Directions</span>
                   <h4 className="text-lg font-black text-[#7f5e3e]">맹꽁당 베이킹 스튜디오 오시는 길</h4>
+                  <p className="text-xs sm:text-sm text-[#906f4e] mt-0.5">📍 경기도 시흥시 대야동 489-6</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <a
-                    href="https://map.naver.com/p/search/%EB%A7%B9%EA%BD%81%EB%8B%B9"
+                    href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%8B%9C%ED%9D%A5%EC%8B%9C%20%EB%8C%80%EC%95%BC%EB%8F%99%20489-6"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-full bg-[#03C75A]/10 border border-[#03C75A]/30 px-3.5 py-1.5 text-xs font-bold text-[#029b46] hover:bg-[#03C75A] hover:text-white transition-all"
@@ -1036,7 +1037,7 @@ export default function Home() {
                     <span>N 네이버 지도</span>
                   </a>
                   <a
-                    href="https://map.kakao.com/?q=%EB%A7%B9%EA%BD%81%EB%8B%B9"
+                    href="https://map.kakao.com/?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%8B%9C%ED%9D%A5%EC%8B%9C%20%EB%8C%80%EC%95%BC%EB%8F%99%20489-6"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-full bg-[#FEE500]/30 border border-[#d6be00]/40 px-3.5 py-1.5 text-xs font-bold text-[#7f5e3e] hover:bg-[#FEE500] transition-all"
@@ -1048,7 +1049,7 @@ export default function Home() {
               <div className="overflow-hidden rounded-2xl border border-[#906f4e]/20 bg-[#fdfbf9] shadow-sm">
                 <iframe
                   title="맹꽁당 베이킹 스튜디오 오시는 길 지도"
-                  src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%8B%9C%ED%9D%A5%EC%8B%9C%20%EB%8C%80%EC%95%BC%EB%8F%99%20489-6&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   className="h-72 sm:h-80 w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
