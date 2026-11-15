@@ -6,7 +6,10 @@ import Image from "next/image";
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [contactName, setContactName] = useState("");
+  const [contactPhone, setContactPhone] = useState("");
+  const [contactType, setContactType] = useState("");
   const [contactMessage, setContactMessage] = useState("");
+  const [privacyAgreed, setPrivacyAgreed] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [sendResult, setSendResult] = useState<{
     type: "success" | "error";
@@ -19,6 +22,14 @@ export default function Home() {
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!privacyAgreed) {
+      setSendResult({
+        type: "error",
+        text: "개인정보 수집 및 이용에 동의해 주세요.",
+      });
+      return;
+    }
+
     setIsSending(true);
     setSendResult(null);
 
@@ -28,7 +39,10 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: contactName,
+          phone: contactPhone,
+          inquiryType: contactType,
           message: contactMessage,
+          privacyAgreed,
         }),
       });
 
@@ -45,7 +59,10 @@ export default function Home() {
           text: "보냈어요!",
         });
         setContactName("");
+        setContactPhone("");
+        setContactType("");
         setContactMessage("");
+        setPrivacyAgreed(false);
       }
     } catch (err) {
       setSendResult({
@@ -75,8 +92,8 @@ export default function Home() {
             <a href="#story" className="hover:text-[#7f5e3e] transition-colors">스토리</a>
             <a href="#target" className="hover:text-[#7f5e3e] transition-colors">수강대상</a>
             <a href="#programs" className="hover:text-[#7f5e3e] transition-colors">프로그램</a>
-            <a href="#healthy" className="hover:text-[#7f5e3e] transition-colors">저당 디저트</a>
             <a href="#ai-class" className="hover:text-[#7f5e3e] transition-colors">AI 매장운영</a>
+            <a href="#healthy" className="hover:text-[#7f5e3e] transition-colors">저당 디저트</a>
             <a href="#why" className="hover:text-[#7f5e3e] transition-colors">차별점</a>
             <a href="#class" className="hover:text-[#7f5e3e] transition-colors">클래스 현장</a>
             <a href="#faq" className="hover:text-[#7f5e3e] transition-colors">FAQ</a>
@@ -468,7 +485,126 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 5. 저당 디저트 전용 섹션 (id="healthy", 배경: #eef6ea) ── */}
+      {/* ── 5. 카페 사장님을 위한 실전 AI 클래스 전용 섹션 (id="ai-class") ── */}
+      <section id="ai-class" className="py-20 bg-white border-b border-[#906f4e]/10">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center space-y-3 mb-12 max-w-3xl mx-auto">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-cyan-600/30 px-3.5 py-1 text-xs font-bold text-cyan-700 uppercase tracking-wider shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-cyan-600 animate-pulse" />
+              Baking × AI Smart Store
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-[#7f5e3e] break-keep">
+              디저트는 맛있게 굽고, 홍보와 매장 운영은 AI에게 맡기세요
+            </h2>
+            <p className="text-base sm:text-lg font-medium text-[#906f4e] leading-relaxed break-keep">
+              바쁜 1인 카페 사장님이 퇴근 후 마케팅 때문에 지치지 않도록, 매장에서 바로 쓰는 실전 AI 활용법을 1:1로 함께 알려드립니다.
+            </p>
+          </div>
+
+          {/* AI 교육 카드 3개 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* 카드 1 */}
+            <div className="rounded-3xl bg-[#fdfbf9] p-7 border border-[#906f4e]/15 shadow-sm hover:border-[#7bb26e] hover:shadow-xl transition-all space-y-4 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eef6ea] text-2xl">
+                  📱
+                </div>
+                <h3 className="text-xl font-black text-[#7f5e3e]">인스타 · 블로그 3분 자동화</h3>
+                <p className="text-sm text-[#906f4e] leading-relaxed break-keep">
+                  구워 나온 디저트 사진 한 장만 있으면 끝! 손님이 찾아오게 만드는 인스타그램 감성 피드, 릴스 대본, 네이버 플레이스·블로그 홍보글을 AI로 3분 만에 작성합니다.
+                </p>
+                <div className="pt-2 text-xs font-semibold text-[#7bb26e]">
+                  #인스타홍보자동화 #네이버플레이스 #릴스대본
+                </div>
+              </div>
+              <div className="pt-4 border-t border-[#906f4e]/10">
+                <a
+                  href="https://pf.kakao.com/_NQslxj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center rounded-xl bg-[#eef6ea] py-2.5 text-xs font-bold text-[#7f5e3e] hover:bg-[#7bb26e] hover:text-white transition-colors"
+                >
+                  SNS 마케팅 AI 문의
+                </a>
+              </div>
+            </div>
+
+            {/* 카드 2 (추천) */}
+            <div className="rounded-3xl bg-[#fdfbf9] p-7 border-2 border-[#7bb26e] shadow-md hover:shadow-xl transition-all space-y-4 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eef6ea] text-2xl">
+                  ✨
+                </div>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-black text-[#7f5e3e]">신메뉴 기획 & 홍보물 제작</h3>
+                  <span className="rounded-full bg-[#7bb26e] px-2.5 py-0.5 text-[11px] font-bold text-white">
+                    인기
+                  </span>
+                </div>
+                <p className="text-sm text-[#906f4e] leading-relaxed break-keep">
+                  계절별 잘 팔리는 디저트 컨셉 기획부터 눈길을 사로잡는 메뉴 네이밍, 매장 앞 배너·POP 문구와 이미지 시안까지 디자이너 없이 직접 뚝딱 만들어냅니다.
+                </p>
+                <div className="pt-2 text-xs font-semibold text-[#7bb26e]">
+                  #신메뉴네이밍 #POP포스터문구 #시즌메뉴기획
+                </div>
+              </div>
+              <div className="pt-4 border-t border-[#906f4e]/10">
+                <a
+                  href="https://pf.kakao.com/_NQslxj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center rounded-xl bg-[#7bb26e] py-2.5 text-xs font-bold text-white hover:bg-[#6da161] transition-colors"
+                >
+                  베이킹+AI 통합 클래스 문의
+                </a>
+              </div>
+            </div>
+
+            {/* 카드 3 */}
+            <div className="rounded-3xl bg-[#fdfbf9] p-7 border border-[#906f4e]/15 shadow-sm hover:border-[#7bb26e] hover:shadow-xl transition-all space-y-4 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eef6ea] text-2xl">
+                  📊
+                </div>
+                <h3 className="text-xl font-black text-[#7f5e3e]">스마트 원가 · 단골 운영 비서</h3>
+                <p className="text-sm text-[#906f4e] leading-relaxed break-keep">
+                  복잡한 엑셀 수식 몰라도 괜찮습니다. AI를 활용해 재료비 변동에 따른 원가율·판매가를 즉시 계산하고, 리뷰 답글과 단골 이벤트 안내 문구까지 손쉽게 관리합니다.
+                </p>
+                <div className="pt-2 text-xs font-semibold text-[#7bb26e]">
+                  #AI원가계산 #리뷰답글자동화 #1인매장비서
+                </div>
+              </div>
+              <div className="pt-4 border-t border-[#906f4e]/10">
+                <a
+                  href="https://pf.kakao.com/_NQslxj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center rounded-xl bg-[#eef6ea] py-2.5 text-xs font-bold text-[#7f5e3e] hover:bg-[#7bb26e] hover:text-white transition-colors"
+                >
+                  스마트 매장 운영 문의
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* 중앙 CTA 버튼 */}
+          <div className="pt-10 text-center">
+            <a
+              href="https://pf.kakao.com/_NQslxj"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#7bb26e] px-9 py-4 text-base font-bold text-white shadow-lg shadow-[#7bb26e]/25 hover:bg-[#6da161] hover:-translate-y-0.5 transition-all"
+            >
+              <span>베이킹 + AI 매장운영 클래스 상담하기</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5-2. 저당 디저트 전용 섹션 (id="healthy", 배경: #eef6ea) ── */}
       <section id="healthy" className="py-20 bg-[#eef6ea] border-b border-[#906f4e]/10">
         <div className="mx-auto max-w-5xl px-6">
           <div className="text-center space-y-3 mb-12 max-w-3xl mx-auto">
@@ -579,125 +715,6 @@ export default function Home() {
               className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#7bb26e] px-9 py-4 text-base font-bold text-white shadow-lg shadow-[#7bb26e]/25 hover:bg-[#6da161] hover:-translate-y-0.5 transition-all"
             >
               <span>저당 디저트 클래스 문의</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 5-2. 카페 사장님을 위한 실전 AI 클래스 전용 섹션 (id="ai-class") ── */}
-      <section id="ai-class" className="py-20 bg-[#faf7f3] border-b border-[#906f4e]/10">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="text-center space-y-3 mb-12 max-w-3xl mx-auto">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-cyan-600/30 px-3.5 py-1 text-xs font-bold text-cyan-700 uppercase tracking-wider shadow-sm">
-              <span className="h-2 w-2 rounded-full bg-cyan-600 animate-pulse" />
-              Baking × AI Smart Store
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-[#7f5e3e] break-keep">
-              디저트는 맛있게 굽고, 홍보와 매장 운영은 AI에게 맡기세요
-            </h2>
-            <p className="text-base sm:text-lg font-medium text-[#906f4e] leading-relaxed break-keep">
-              바쁜 1인 카페 사장님이 퇴근 후 마케팅 때문에 지치지 않도록, 매장에서 바로 쓰는 실전 AI 활용법을 1:1로 함께 알려드립니다.
-            </p>
-          </div>
-
-          {/* AI 교육 카드 3개 */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* 카드 1 */}
-            <div className="rounded-3xl bg-white p-7 border border-[#906f4e]/15 shadow-sm hover:border-[#7bb26e] hover:shadow-xl transition-all space-y-4 flex flex-col justify-between">
-              <div className="space-y-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eef6ea] text-2xl">
-                  📱
-                </div>
-                <h3 className="text-xl font-black text-[#7f5e3e]">인스타 · 블로그 3분 자동화</h3>
-                <p className="text-sm text-[#906f4e] leading-relaxed break-keep">
-                  구워 나온 디저트 사진 한 장만 있으면 끝! 손님이 찾아오게 만드는 인스타그램 감성 피드, 릴스 대본, 네이버 플레이스·블로그 홍보글을 AI로 3분 만에 작성합니다.
-                </p>
-                <div className="pt-2 text-xs font-semibold text-[#7bb26e]">
-                  #인스타홍보자동화 #네이버플레이스 #릴스대본
-                </div>
-              </div>
-              <div className="pt-4 border-t border-[#906f4e]/10">
-                <a
-                  href="https://pf.kakao.com/_NQslxj"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center rounded-xl bg-[#eef6ea] py-2.5 text-xs font-bold text-[#7f5e3e] hover:bg-[#7bb26e] hover:text-white transition-colors"
-                >
-                  SNS 마케팅 AI 문의
-                </a>
-              </div>
-            </div>
-
-            {/* 카드 2 (추천) */}
-            <div className="rounded-3xl bg-white p-7 border-2 border-[#7bb26e] shadow-md hover:shadow-xl transition-all space-y-4 flex flex-col justify-between">
-              <div className="space-y-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eef6ea] text-2xl">
-                  ✨
-                </div>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-black text-[#7f5e3e]">신메뉴 기획 & 홍보물 제작</h3>
-                  <span className="rounded-full bg-[#7bb26e] px-2.5 py-0.5 text-[11px] font-bold text-white">
-                    인기
-                  </span>
-                </div>
-                <p className="text-sm text-[#906f4e] leading-relaxed break-keep">
-                  계절별 잘 팔리는 디저트 컨셉 기획부터 눈길을 사로잡는 메뉴 네이밍, 매장 앞 배너·POP 문구와 이미지 시안까지 디자이너 없이 직접 뚝딱 만들어냅니다.
-                </p>
-                <div className="pt-2 text-xs font-semibold text-[#7bb26e]">
-                  #신메뉴네이밍 #POP포스터문구 #시즌메뉴기획
-                </div>
-              </div>
-              <div className="pt-4 border-t border-[#906f4e]/10">
-                <a
-                  href="https://pf.kakao.com/_NQslxj"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center rounded-xl bg-[#7bb26e] py-2.5 text-xs font-bold text-white hover:bg-[#6da161] transition-colors"
-                >
-                  베이킹+AI 통합 클래스 문의
-                </a>
-              </div>
-            </div>
-
-            {/* 카드 3 */}
-            <div className="rounded-3xl bg-white p-7 border border-[#906f4e]/15 shadow-sm hover:border-[#7bb26e] hover:shadow-xl transition-all space-y-4 flex flex-col justify-between">
-              <div className="space-y-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eef6ea] text-2xl">
-                  📊
-                </div>
-                <h3 className="text-xl font-black text-[#7f5e3e]">스마트 원가 · 단골 운영 비서</h3>
-                <p className="text-sm text-[#906f4e] leading-relaxed break-keep">
-                  복잡한 엑셀 수식 몰라도 괜찮습니다. AI를 활용해 재료비 변동에 따른 원가율·판매가를 즉시 계산하고, 리뷰 답글과 단골 이벤트 안내 문구까지 손쉽게 관리합니다.
-                </p>
-                <div className="pt-2 text-xs font-semibold text-[#7bb26e]">
-                  #AI원가계산 #리뷰답글자동화 #1인매장비서
-                </div>
-              </div>
-              <div className="pt-4 border-t border-[#906f4e]/10">
-                <a
-                  href="https://pf.kakao.com/_NQslxj"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center rounded-xl bg-[#eef6ea] py-2.5 text-xs font-bold text-[#7f5e3e] hover:bg-[#7bb26e] hover:text-white transition-colors"
-                >
-                  스마트 매장 운영 문의
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* 중앙 CTA 버튼 */}
-          <div className="pt-10 text-center">
-            <a
-              href="https://pf.kakao.com/_NQslxj"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#7bb26e] px-9 py-4 text-base font-bold text-white shadow-lg shadow-[#7bb26e]/25 hover:bg-[#6da161] hover:-translate-y-0.5 transition-all"
-            >
-              <span>베이킹 + AI 매장운영 클래스 상담하기</span>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
@@ -1002,6 +1019,43 @@ export default function Home() {
               </div>
             </div>
 
+            {/* 맹꽁당 오시는 길 지도 */}
+            <div className="space-y-4 pt-2">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                  <span className="text-xs font-bold text-[#7bb26e] uppercase">Map & Directions</span>
+                  <h4 className="text-lg font-black text-[#7f5e3e]">맹꽁당 베이킹 스튜디오 오시는 길</h4>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://map.naver.com/p/search/%EB%A7%B9%EA%BD%81%EB%8B%B9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-[#03C75A]/10 border border-[#03C75A]/30 px-3.5 py-1.5 text-xs font-bold text-[#029b46] hover:bg-[#03C75A] hover:text-white transition-all"
+                  >
+                    <span>N 네이버 지도</span>
+                  </a>
+                  <a
+                    href="https://map.kakao.com/?q=%EB%A7%B9%EA%BD%81%EB%8B%B9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-[#FEE500]/30 border border-[#d6be00]/40 px-3.5 py-1.5 text-xs font-bold text-[#7f5e3e] hover:bg-[#FEE500] transition-all"
+                  >
+                    <span>카카오맵</span>
+                  </a>
+                </div>
+              </div>
+              <div className="overflow-hidden rounded-2xl border border-[#906f4e]/20 bg-[#fdfbf9] shadow-sm">
+                <iframe
+                  title="맹꽁당 베이킹 스튜디오 오시는 길 지도"
+                  src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  className="h-72 sm:h-80 w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
+
             {/* 메인 카카오톡 문의 큰 버튼 */}
             <div className="pt-2 text-center">
               <a
@@ -1065,27 +1119,28 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ── 연락하기 (이메일 전송 폼) ── */}
-          <div className="mt-8 rounded-3xl bg-white p-8 sm:p-12 border border-[#906f4e]/15 shadow-sm">
-            <div className="mb-6 space-y-2 text-center">
+          {/* ── 무료 상담 신청 폼 (구글시트 & 이메일 연동) ── */}
+          <div className="mt-8 rounded-3xl bg-[#fdfbf7] p-8 sm:p-12 border border-[#906f4e]/15 shadow-sm">
+            <div className="mb-8 space-y-2 text-center">
               <span className="inline-block rounded-full bg-[#7bb26e]/15 px-3 py-1 text-xs font-bold text-[#7bb26e]">
-                Email Message
+                Consultation Request
               </span>
               <h3 className="text-xl sm:text-2xl font-black text-[#7f5e3e]">
-                연락하기
+                무료 상담 신청하기
               </h3>
               <p className="text-xs sm:text-sm text-[#906f4e]/80">
-                이름과 하고 싶은 말을 남겨주시면 메일로 바로 전달됩니다.
+                매장 상황과 고민을 남겨주시면 확인 후 빠르게 연락드립니다.
               </p>
             </div>
 
-            <form onSubmit={handleContactSubmit} className="mx-auto max-w-xl space-y-5">
-              <div className="space-y-1.5">
+            <form onSubmit={handleContactSubmit} className="mx-auto max-w-xl space-y-6">
+              {/* 이름 * */}
+              <div className="space-y-2">
                 <label
                   htmlFor="contact-name"
                   className="block text-sm font-bold text-[#7f5e3e]"
                 >
-                  이름
+                  이름 *
                 </label>
                 <input
                   id="contact-name"
@@ -1093,41 +1148,114 @@ export default function Home() {
                   required
                   value={contactName}
                   onChange={(e) => setContactName(e.target.value)}
-                  placeholder="이름을 입력해 주세요"
-                  className="w-full rounded-xl border border-[#906f4e]/25 bg-[#fdfbf9] px-4 py-3 text-sm text-[#7f5e3e] placeholder:text-[#906f4e]/50 focus:border-[#7bb26e] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#7bb26e]/20 transition-all"
+                  placeholder="홍길동"
+                  className="w-full rounded-full border border-[#906f4e]/25 bg-white px-6 py-4 text-sm text-[#7f5e3e] placeholder:text-[#906f4e]/55 focus:border-[#7bb26e] focus:outline-none focus:ring-2 focus:ring-[#7bb26e]/20 transition-all"
                 />
               </div>
 
-              <div className="space-y-1.5">
+              {/* 연락처 * */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="contact-phone"
+                  className="block text-sm font-bold text-[#7f5e3e]"
+                >
+                  연락처 *
+                </label>
+                <input
+                  id="contact-phone"
+                  type="tel"
+                  required
+                  value={contactPhone}
+                  onChange={(e) => setContactPhone(e.target.value)}
+                  placeholder="010-1234-5678"
+                  className="w-full rounded-full border border-[#906f4e]/25 bg-white px-6 py-4 text-sm text-[#7f5e3e] placeholder:text-[#906f4e]/55 focus:border-[#7bb26e] focus:outline-none focus:ring-2 focus:ring-[#7bb26e]/20 transition-all"
+                />
+              </div>
+
+              {/* 문의 종류 * */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="contact-type"
+                  className="block text-sm font-bold text-[#7f5e3e]"
+                >
+                  문의 종류 *
+                </label>
+                <div className="relative">
+                  <select
+                    id="contact-type"
+                    required
+                    value={contactType}
+                    onChange={(e) => setContactType(e.target.value)}
+                    className="w-full appearance-none rounded-full border border-[#906f4e]/25 bg-white px-6 py-4 pr-10 text-sm text-[#7f5e3e] focus:border-[#7bb26e] focus:outline-none focus:ring-2 focus:ring-[#7bb26e]/20 transition-all"
+                  >
+                    <option value="" disabled>
+                      선택해 주세요
+                    </option>
+                    <option value="구움과자 마스터 클래스">구움과자 마스터 클래스</option>
+                    <option value="쇼케이스 케이크 & 타르트 실전반">쇼케이스 케이크 & 타르트 실전반</option>
+                    <option value="카페 디저트 1:1 맞춤 컨설팅">카페 디저트 1:1 맞춤 컨설팅</option>
+                    <option value="베이킹 + AI 매장운영 클래스">베이킹 + AI 매장운영 클래스</option>
+                    <option value="저당 디저트 클래스">저당 디저트 클래스</option>
+                    <option value="기타 창업/수강 문의">기타 창업/수강 문의</option>
+                  </select>
+                  <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[#7f5e3e]">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              {/* 문의 내용 * */}
+              <div className="space-y-2">
                 <label
                   htmlFor="contact-message"
                   className="block text-sm font-bold text-[#7f5e3e]"
                 >
-                  하고 싶은 말
+                  문의 내용 *
                 </label>
                 <textarea
                   id="contact-message"
                   required
-                  rows={4}
+                  rows={5}
                   value={contactMessage}
                   onChange={(e) => setContactMessage(e.target.value)}
-                  placeholder="문의 내용이나 하고 싶은 말을 자유롭게 적어주세요"
-                  className="w-full rounded-xl border border-[#906f4e]/25 bg-[#fdfbf9] px-4 py-3 text-sm text-[#7f5e3e] placeholder:text-[#906f4e]/50 focus:border-[#7bb26e] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#7bb26e]/20 transition-all resize-y"
+                  placeholder="매장 상황과 고민을 간단히 적어 주세요"
+                  className="w-full rounded-3xl border border-[#906f4e]/25 bg-white px-6 py-4 text-sm text-[#7f5e3e] placeholder:text-[#906f4e]/55 focus:border-[#7bb26e] focus:outline-none focus:ring-2 focus:ring-[#7bb26e]/20 transition-all resize-y"
                 />
               </div>
 
+              {/* 개인정보 수집 및 이용 동의 * */}
+              <div className="flex items-center gap-3 pt-1">
+                <input
+                  id="contact-privacy"
+                  type="checkbox"
+                  required
+                  checked={privacyAgreed}
+                  onChange={(e) => setPrivacyAgreed(e.target.checked)}
+                  className="h-5 w-5 rounded border-[#906f4e]/40 text-[#7bb26e] focus:ring-[#7bb26e] cursor-pointer accent-[#7bb26e]"
+                />
+                <label
+                  htmlFor="contact-privacy"
+                  className="text-sm font-medium text-[#906f4e] cursor-pointer select-none"
+                >
+                  개인정보 수집 및 이용에 동의합니다. *
+                </label>
+              </div>
+
+              {/* 무료 상담 신청하기 버튼 */}
               <button
                 type="submit"
                 disabled={isSending}
-                className="w-full rounded-xl bg-[#7bb26e] px-6 py-4 text-base font-bold text-white shadow-md shadow-[#7bb26e]/20 hover:bg-[#6da161] disabled:opacity-60 disabled:cursor-not-allowed transition-all cursor-pointer"
+                className="w-full rounded-full bg-[#73a968] px-6 py-4 text-base font-bold text-white shadow-md shadow-[#73a968]/20 hover:bg-[#65985b] disabled:opacity-60 disabled:cursor-not-allowed transition-all cursor-pointer"
               >
-                {isSending ? "보내는 중..." : "보내기"}
+                {isSending ? "보내는 중..." : "무료 상담 신청하기"}
               </button>
 
               {sendResult && (
                 <div
                   role="status"
-                  className={`rounded-xl p-4 text-center text-sm font-bold ${
+                  className={`rounded-2xl p-4 text-center text-sm font-bold ${
                     sendResult.type === "success"
                       ? "bg-[#eef6ea] text-[#5c8a50] border border-[#7bb26e]/30"
                       : "bg-red-50 text-red-600 border border-red-200"
