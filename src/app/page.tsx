@@ -254,6 +254,165 @@ export default function Home() {
             </p>
           </div>
 
+          {/* 실제 수업 공정별 분류 갤러리 (STEP 01 ~ STEP 03) */}
+          <div className="mt-8 space-y-6">
+            <div className="text-center space-y-1.5">
+              <span className="inline-block rounded-full bg-[#7bb26e]/15 px-3 py-1 text-xs font-bold text-[#7bb26e]">
+                Real Class Process
+              </span>
+              <h3 className="text-xl sm:text-2xl font-black text-[#7f5e3e] break-keep">
+                계량부터 포장까지, 직접 손으로 완성하는 실제 수업 현장
+              </h3>
+              <p className="text-xs sm:text-sm text-[#906f4e]/85">
+                눈으로만 보는 시연이 아닌, 전 공정을 직접 실습하며 손에 익히는 밀착 클래스입니다.
+              </p>
+            </div>
+
+            {/* STEP 01. 가루 체치기 & 반죽 배합 */}
+            <div className="rounded-3xl bg-white p-6 sm:p-8 border border-[#906f4e]/15 shadow-sm space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2.5">
+                  <span className="rounded-full bg-[#7bb26e] px-3 py-1 text-xs font-bold text-white">
+                    STEP 01
+                  </span>
+                  <h4 className="text-base sm:text-lg font-black text-[#7f5e3e]">
+                    가루 체치기 & 결을 살리는 반죽 배합
+                  </h4>
+                </div>
+                <span className="text-xs font-semibold text-[#906f4e]/75">
+                  정확한 계량 · 체치기 · 주걱 섞기
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  {
+                    src: "/KakaoTalk_20261117_190855831_07.jpg",
+                    caption: "고운 식감을 위한 가루 체치기 실습",
+                  },
+                  {
+                    src: "/KakaoTalk_20261117_190855831_08.jpg",
+                    caption: "1:1 눈높이에 맞춘 기초 계량 & 전처리",
+                  },
+                  {
+                    src: "/KakaoTalk_20261117_190855831_06.jpg",
+                    caption: "글루텐을 제어하며 부드럽게 반죽 섞기",
+                  },
+                ].map((photo, i) => (
+                  <div key={i} className="group space-y-2">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#fdfbf9] border border-[#906f4e]/10">
+                      <Image
+                        src={photo.src}
+                        alt={photo.caption}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, 33vw"
+                      />
+                    </div>
+                    <p className="text-xs font-semibold text-[#7f5e3e] text-center">
+                      {photo.caption}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* STEP 02. 짤주머니 파지법 & 정량 팬닝 */}
+            <div className="rounded-3xl bg-white p-6 sm:p-8 border border-[#906f4e]/15 shadow-sm space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2.5">
+                  <span className="rounded-full bg-[#7bb26e] px-3 py-1 text-xs font-bold text-white">
+                    STEP 02
+                  </span>
+                  <h4 className="text-base sm:text-lg font-black text-[#7f5e3e]">
+                    짤주머니 파지법 & 균일한 정량 팬닝
+                  </h4>
+                </div>
+                <span className="text-xs font-semibold text-[#906f4e]/75">
+                  밀착 자세 교정 · 일정한 볼륨감 완성
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  {
+                    src: "/KakaoTalk_20261117_190855831_05.jpg",
+                    caption: "짤주머니 올바른 파지법 & 팬닝 준비",
+                  },
+                  {
+                    src: "/KakaoTalk_20261117_190855831_04.jpg",
+                    caption: "옆에서 함께 잡아주는 1:1 밀착 팬닝 코칭",
+                  },
+                  {
+                    src: "/KakaoTalk_20261117_190855831_03.jpg",
+                    caption: "일정한 모양과 무게로 반죽 채우기",
+                  },
+                ].map((photo, i) => (
+                  <div key={i} className="group space-y-2">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#fdfbf9] border border-[#906f4e]/10">
+                      <Image
+                        src={photo.src}
+                        alt={photo.caption}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, 33vw"
+                      />
+                    </div>
+                    <p className="text-xs font-semibold text-[#7f5e3e] text-center">
+                      {photo.caption}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* STEP 03. 토핑 데코레이션 & 선물 포장 완성 */}
+            <div className="rounded-3xl bg-white p-6 sm:p-8 border border-[#906f4e]/15 shadow-sm space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2.5">
+                  <span className="rounded-full bg-[#7bb26e] px-3 py-1 text-xs font-bold text-white">
+                    STEP 03
+                  </span>
+                  <h4 className="text-base sm:text-lg font-black text-[#7f5e3e]">
+                    크림·토핑 데코레이션 & 베이킹 박스 포장
+                  </h4>
+                </div>
+                <span className="text-xs font-semibold text-[#906f4e]/75">
+                  비주얼 마무리 · 선물/판매용 패키지 완성
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  {
+                    src: "/KakaoTalk_20261117_190855831_01.jpg",
+                    caption: "갓 구운 머핀 위 크림 & 크런치 토핑 데코",
+                  },
+                  {
+                    src: "/KakaoTalk_20261117_190855831_02.jpg",
+                    caption: "디저트가 흔들리지 않는 전용 박스 조립",
+                  },
+                  {
+                    src: "/KakaoTalk_20261117_190855831.jpg",
+                    caption: "정성 가득한 수제 디저트 선물 세트 완성",
+                  },
+                ].map((photo, i) => (
+                  <div key={i} className="group space-y-2">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#fdfbf9] border border-[#906f4e]/10">
+                      <Image
+                        src={photo.src}
+                        alt={photo.caption}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, 33vw"
+                      />
+                    </div>
+                    <p className="text-xs font-semibold text-[#7f5e3e] text-center">
+                      {photo.caption}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* 가족을 위한 디저트 이야기 (감성 카드 리뉴얼) */}
           <div className="mt-6 rounded-3xl bg-gradient-to-br from-white via-[#faf7f3] to-[#7bb26e]/10 border border-[#7bb26e]/25 p-7 sm:p-9 shadow-sm break-keep">
             <div className="flex items-center gap-2.5 mb-3">
