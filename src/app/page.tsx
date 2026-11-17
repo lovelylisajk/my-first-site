@@ -254,18 +254,26 @@ export default function Home() {
             </p>
           </div>
 
-          {/* 실제 수업 공정별 분류 갤러리 (STEP 01 ~ STEP 03) */}
+          {/* 실제 수업 공정별 분류 갤러리 (시흥대야종합사회복지관 & 작은자리복지관) */}
           <div className="mt-8 space-y-6">
             <div className="text-center space-y-1.5">
               <span className="inline-block rounded-full bg-[#7bb26e]/15 px-3 py-1 text-xs font-bold text-[#7bb26e]">
-                Real Class Process
+                Real Class Archive
               </span>
               <h3 className="text-xl sm:text-2xl font-black text-[#7f5e3e] break-keep">
                 계량부터 포장까지, 직접 손으로 완성하는 실제 수업 현장
               </h3>
               <p className="text-xs sm:text-sm text-[#906f4e]/85">
-                눈으로만 보는 시연이 아닌, 전 공정을 직접 실습하며 손에 익히는 밀착 클래스입니다.
+                시흥대야종합사회복지관 · 작은자리복지관과 함께한 눈높이 실습 클래스 기록입니다.
               </p>
+            </div>
+
+            {/* [기관 1] 시흥대야종합사회복지관 수업 헤더 */}
+            <div className="flex items-center gap-2 pt-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#7bb26e]" />
+              <h4 className="text-base sm:text-lg font-black text-[#7f5e3e]">
+                시흥대야종합사회복지관 베이킹 수업 (공정별 3단계 실습)
+              </h4>
             </div>
 
             {/* STEP 01. 가루 체치기 & 반죽 배합 */}
@@ -409,6 +417,63 @@ export default function Home() {
                     </p>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* [기관 2] 작은자리복지관 수업 섹션 */}
+            <div className="pt-4 space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#7bb26e]" />
+                <h4 className="text-base sm:text-lg font-black text-[#7f5e3e]">
+                  작은자리복지관 베이킹 수업 (성형 · 팬닝 · 개별 포장 실습)
+                </h4>
+              </div>
+
+              <div className="rounded-3xl bg-white p-6 sm:p-8 border border-[#906f4e]/15 shadow-sm space-y-4">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2.5">
+                    <span className="rounded-full bg-[#7bb26e] px-3 py-1 text-xs font-bold text-white">
+                      작은자리복지관
+                    </span>
+                    <h5 className="text-base sm:text-lg font-black text-[#7f5e3e]">
+                      반죽 둥글리기부터 정교한 팬닝, 구움과자 포장까지
+                    </h5>
+                  </div>
+                  <span className="text-xs font-semibold text-[#906f4e]/75">
+                    반죽 성형 · 꼬끄 팬닝 · 개별 실링 포장
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {[
+                    {
+                      src: "/class-4.jpg",
+                      caption: "일정한 크기로 분할 후 반죽 둥글리기 성형 실습",
+                    },
+                    {
+                      src: "/class-5.jpg",
+                      caption: "도안 위에 균일한 크기로 짜내는 정교한 팬닝 실습",
+                    },
+                    {
+                      src: "/class-6.jpg",
+                      caption: "구워 나온 아몬드 구움과자 식힘 및 개별 포장 완성",
+                    },
+                  ].map((photo, i) => (
+                    <div key={i} className="group space-y-2">
+                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#fdfbf9] border border-[#906f4e]/10">
+                        <Image
+                          src={photo.src}
+                          alt={photo.caption}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 640px) 100vw, 33vw"
+                        />
+                      </div>
+                      <p className="text-xs font-semibold text-[#7f5e3e] text-center">
+                        {photo.caption}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
